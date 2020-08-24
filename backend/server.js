@@ -6,20 +6,21 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
-//import routes
-const subs = require('./routes/subs');
 
 //calling express...
 const app = express();
 const log = console.log;
 const PORT = process.env.PORT || 3000;
 
+//import routes
+const subs = require('./routes/subs');
+
 //middlewares
-app.use(express.static('../frontend/assets'));
-app.use(express.static('../frontend/assets/images'));
-app.use(express.static('../frontend/assets/css'));
-app.use(express.static('../frontend/assets/js'));
-app.use(express.static('../frontend/assets/fonts'));
+app.use(express.static('./frontend'));
+app.use(express.static('./frontend/assets/images'));
+app.use(express.static('./frontend/assets/css'));
+app.use(express.static('./frontend/assets/js'));
+app.use(express.static('./frontend/assets/fonts'));
 
 //route handlers
 app.use("/api", subs)
@@ -32,7 +33,7 @@ app.use(express.json());
 
 //send mail route
 app.get("/",(req,res)=>{
-     res.sendFile(path.join(__dirname, "../frontend", 'index.html'))
+     res.sendFile(path.join(__dirname, "./frontend", 'index.html'))
 })
 
 

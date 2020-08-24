@@ -9,6 +9,5 @@ email: {
 }
 });
 
-const Subscribers = mongoose.model('subscribers',subSchema);
 
-module.exports = Subscribers; 
+module.exports = mongoose.model('subscriber',subSchema);
